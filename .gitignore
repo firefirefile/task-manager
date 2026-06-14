@@ -1,0 +1,28 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+/build
+/capture
+
+# Coverage
+coverage
+.nyc_output
+
+# Cache
+.cache
+.parcel-cache
+.vite  # <-- добавь это (кэш Vite)
+
+# Zustand persist
+*.persist
+
+# OS files (у тебя уже есть .DS_Store, добавь Thumbs.db)
+Thumbs.db
+
+# Временные файлы редакторов (у тебя почти всё есть)
+*.tmp
+*.tempnode_modules/
+.idea/
