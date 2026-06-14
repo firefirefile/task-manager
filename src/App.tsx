@@ -2,6 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import { Button, Flex } from '@chakra-ui/react'
 import Planner from './pages/Planner/Planner.tsx'
 import FormPage from './pages/OnboardingForm/FormPage.tsx'
+import CreateTask from './pages/CreateTask/CreateTask.tsx'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<FormPage />} />
         <Route path="/planner" element={<Planner />} />
+        <Route path="/create" element={<CreateTask />} />
       </Routes>
     </Flex>
   )
