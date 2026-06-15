@@ -22,6 +22,7 @@ interface AppStore {
   defaultFieldHeight: number
   defaultFieldDuration: number
   taskBank: Task[]
+  hasOnboarded: boolean
   scheduledTasks: Record<DayOfWeek, Task[]>
   setDefaultTaskDuration: (duration: number) => void
   setDefaultFieldHeight: (height: number) => void
@@ -29,6 +30,7 @@ interface AppStore {
   addToTaskBank: (task: Task) => void
   removeFromTaskBank: (taskId: string) => void
   moveTask: (taskId: string, from: string, to: string) => void
+  setHasOnboarded: (value: boolean) => void
 }
 
 export const useStore = create<AppStore>()(
@@ -38,6 +40,7 @@ export const useStore = create<AppStore>()(
       defaultFieldHeight: 600,
       defaultFieldDuration: 21600,
       taskBank: [],
+      hasOnboarded: false,
       scheduledTasks: {
         monday: [],
         tuesday: [],
@@ -63,6 +66,8 @@ export const useStore = create<AppStore>()(
         set((state) => ({
           taskBank: state.taskBank.filter((task) => task.id !== taskId),
         })),
+
+      setHasOnboarded: (value) => set({ hasOnboarded: value }),
 
       moveTask: (taskId, from, to) => {
         const state = get()
