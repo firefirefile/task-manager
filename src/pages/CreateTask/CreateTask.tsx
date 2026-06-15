@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../app/stores/useStore.ts'
 import { useState } from 'react'
-import { IoAdd, IoTrashOutline } from 'react-icons/io5'
+import { ImCross } from 'react-icons/im'
+
 import {
   VStack,
   Text,
@@ -77,11 +78,12 @@ const CreateTask = () => {
             <Text fontWeight="bold">Задача</Text>
             <IconButton
               aria-label="Удалить"
-              icon={<IoTrashOutline />}
               size="sm"
               onClick={() => removeTask(task.id)}
-              isDisabled={tasks.length === 1}
-            />
+              disabled={tasks.length === 1}
+            >
+              <ImCross />
+            </IconButton>
           </HStack>
           <Input
             placeholder="Название задачи"
@@ -98,7 +100,7 @@ const CreateTask = () => {
           />
         </Box>
       ))}
-      <Button leftIcon={<IoAdd />} onClick={addTask} variant="outline">
+      <Button onClick={addTask} variant="outline">
         Добавить ещё задачу
       </Button>
 

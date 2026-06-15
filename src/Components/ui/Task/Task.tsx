@@ -6,23 +6,17 @@ interface TaskProps {
   id: string
   title: string
   description: string
-  className: string
+  className?: string
 }
 
 const Task = ({ id, title, description, className }: TaskProps) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id })
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id })
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1,
+    cursor: 'grab',
   }
 
   return (

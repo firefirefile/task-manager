@@ -1,14 +1,23 @@
 import type { ReactNode } from 'react'
 import { useDroppable } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 interface TaskFieldProps {
   height: string
   className: string
   children: ReactNode
+  id: string
+  items: string[]
 }
 
-const TaskField = ({ height, className, children }: TaskFieldProps) => {
-  const { setNodeRef } = useDroppable({ id: 'task-field' })
+const TaskField = ({
+  id,
+  height,
+  className,
+  children,
+  items,
+}: TaskFieldProps) => {
+  const { setNodeRef } = useDroppable({ id })
 
   return (
     <div
@@ -16,7 +25,13 @@ const TaskField = ({ height, className, children }: TaskFieldProps) => {
       className={`task-list_container ${className}`}
       style={{ height: `${height}px` }}
     >
-      {children}
+      <SortableContext
+        id={id}
+        items={items}
+        strategy={verticalListSortingStrategy}
+      >
+        {children}
+      </SortableContext>
     </div>
   )
 }
