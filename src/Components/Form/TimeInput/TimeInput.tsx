@@ -5,17 +5,23 @@ import {
   NumberInput,
 } from '@chakra-ui/react'
 import { LuMinus, LuPlus } from 'react-icons/lu'
-import { useState } from 'react'
 
-const TimeInput = () => {
-  const [value, setValue] = useState(3)
+interface TimeInputProps {
+  value: number
+  onChange: (value: number) => void
+  min?: number
+  max?: number
+}
+
+const TimeInput = (props: TimeInputProps) => {
+  const { value, onChange, min = 1, max = 6 } = props
 
   return (
     <NumberInputRoot
       value={value.toString()}
-      onValueChange={(details) => setValue(details.value)}
-      min={1}
-      max={60}
+      onValueChange={(details) => onChange(Number(details.value))}
+      min={min}
+      max={max}
     >
       <HStack gap="2">
         <NumberInput.DecrementTrigger asChild>
