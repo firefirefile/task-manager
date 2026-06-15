@@ -7,6 +7,15 @@ interface Task {
   durationSeconds: number
 }
 
+export type DayOfWeek =
+  | 'monday'
+  | 'tuesday'
+  | 'wednesday'
+  | 'thursday'
+  | 'friday'
+  | 'saturday'
+  | 'sunday'
+
 interface AppStore {
   defaultTaskDuration: number
   defaultFieldHeight: number
